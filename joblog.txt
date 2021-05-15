@@ -6,4 +6,5 @@
 21:30 - 21:45 Installing Gimp (design open source tool)
 21:45 - 22:00 Creating the Icons file (Icons.js)
 22:00 - 22:45 Building the header component (Header/Header.js)
-22:45 -       Creating the component modal for the profile Icon
+22:45 - 23:00 Fixing a bug corresponding to the width dimension of the header (the width of the header didn't fit the width of the body)
+23:00 - 23:45 Creating the component modal for the profile Icon
