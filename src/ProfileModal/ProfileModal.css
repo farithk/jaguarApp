@@ -1,13 +1,14 @@
 .profileModal{
-  position: relative;
+  position: absolute;
   width: 250px;
   height: 110px;
   border-radius: 8px;
   margin-left: -240px;
   margin-top: 25px;
-  background-color: #383b40;
+  background-color: #767b82;
   padding: 15px;
   color: #ffffff;
+  z-index: 20;
 }
 
 .profileModal:after {
@@ -18,7 +19,7 @@
 	width: 0;
 	height: 0;
 	border: 20px solid transparent;
-	border-bottom-color: #383b40;
+	border-bottom-color: #767b82;
 	border-top: 0;
 	margin-left: 100px;
 	margin-top: -15px;
@@ -68,4 +69,5 @@
   height: 100%;
   left: 0;
   top: 0;
+  z-index: 20;
 }

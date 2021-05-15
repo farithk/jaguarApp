@@ -17,7 +17,7 @@ function Header(){
     <div className="header">
     {/*Main page
       HEADER
-      logo of torre -> search icon (to go and find people or jobs) -> job my jobs (applied) -> my genome (profile) -> profile image (name and email and the genome)
+      logo of torre -> search icon (to go and find people or jobs) -> job my jobs (applied) -> my genome (profile) -> profile image (name and email and the genome) -> profile modal (component)
     */}
       <div className="logo__container">
       <BackgroundIcon
