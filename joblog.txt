@@ -1,0 +1,4 @@
+20:00 - 20:15 Understanding the problem
+20:15 - 20:45 Checking the end Points and visualizing the way they are used by looking the network requests in the browser, and using Postman to make the POST and GET request to see the responses
+20:45 - 21:00 Creating the project using create-react-app and cleaning the unnecessary files to start the development.
+21:00 - 21:15 Planing the structure of the project (starting by the main view)
