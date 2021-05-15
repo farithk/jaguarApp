@@ -1,0 +1,185 @@
+.genome{
+  display: flex;
+  background-color: #383b40;
+  border: 0px solid red;
+  height: calc(100vh - 60px);
+  color: #ffffff;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+     -moz-user-select: none; /* Old versions of Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome, Edge, Opera and Firefox */
+}
+
+.genome__left__container{
+  width: 40%;
+  border: 1px solid #232529;
+  background-color: #232529;
+  border-radius: 4px;
+  margin-left: 30%;
+  height: 80%;
+  margin-top: 80px;
+  margin-right: 0%;
+  -webkit-box-shadow: -6px 7px 8px -3px #000000;
+  box-shadow: -6px 7px 8px -3px #000000;
+}
+
+.genome__right__container{
+  width: 40%;
+  border: 1px solid #232529;
+  background-color: #232529;
+  border-radius: 4px;
+  height: 80%;
+  margin-top: 80px;
+  -webkit-box-shadow: -6px 7px 8px -3px #000000;
+  box-shadow: -6px 7px 8px -3px #000000;
+}
+
+
+.genome__profile__image{
+  width: 120px;
+  margin-left: calc(50% - 60px);
+  margin-top: -60px;
+}
+
+.genome__profile__name{
+  font-size: 23px;
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.genome__profile__role{
+  font-size: 14px;
+  opacity: 0.5;
+  width: 100%;
+  text-align: center;
+  margin-top: 8px;
+}
+
+.genome__profile__city{
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  margin-top: 10px;
+  opacity: 0.5;
+}
+
+.genome__profile__who{
+  font-size: 20px;
+  width: 100%;
+  text-align: left;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.genome__profile__resume{
+  text-align: justify;
+  width: 80%;
+  margin-left: 20px;
+  margin-top: 15px;
+  opacity: 0.5;
+}
+
+
+.genome__skills__container{
+  width: 100%;
+  border: 0px solid white;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.genome__icon__cotainer{
+  width: 40px;
+  cursor: pointer;
+  border: 0px solid red;
+  margin-top: 20px;
+  margin-left: 10px;
+  opacity: 0.7;
+}
+
+.genome__icon__cotainer:hover{
+  opacity: 1;
+}
+
+.genome__skills{
+  margin-left: 20px;
+  max-width: 90%;
+}
+
+.genome__skills div{
+  border: 0px solid red;
+  height: 150px;
+}
+
+.genome__skills__tags{
+  background-color: #383b40;
+  color: #ffffff;
+  margin-left: 10px;
+  margin-top: 10px;
+  padding: 5px 10px 5px 10px;
+  border-radius: 10px;
+  float: left;
+  cursor: pointer;
+}
+
+.genome__skills__tags:hover{
+  background-color: #60656e;
+}
+
+.genome__connections{
+  margin-left: 20px;
+  margin-top: 20px;
+  background-color: #383b40;
+  width: fit-content;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.genome__connections:hover{
+  background-color: #60656e;
+}
+
+.genome__connection__name{
+  font-size: 18px;
+}
+
+.genome__connection_info{
+  opacity: 0.6;
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+@media only screen and (max-width: 1000px) {
+  .genome{
+    display: block;
+    background-color: #383b40;
+    border: 0px solid red;
+    padding-top: 20px;
+    height: 150vh;
+  }
+
+  .genome__left__container{
+    margin-top: 60px;
+    width: 80%;
+    margin-left: 10%;
+    height: fit-content;
+    padding-bottom: 50px;
+  }
+
+  .genome__right__container{
+    width: 80%;
+    margin-left: 10%;
+    height: 45%;
+  }
+
+  .genome__skills div{
+    border: 0px solid red;
+    height: 200px;
+  }
+}

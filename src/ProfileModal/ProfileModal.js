@@ -6,10 +6,16 @@ function ProfileModal(
   {
    setOpenModalProfile,
    openModalProfile,
+   view,
+   setView,
   }){
 
   const handleOverlay = () => {
     setOpenModalProfile();
+  }
+
+  const handleOpenGenome = (value) => {
+    setView(value);
   }
 
   return(
@@ -29,7 +35,7 @@ function ProfileModal(
             </div>
           </div>
 
-        <div className="button__genome">YOUR GENOME</div>
+        <div onClick={() => {handleOpenGenome("genome"); handleOverlay()}} className="button__genome">YOUR GENOME</div>
       </div>
     </>
   )

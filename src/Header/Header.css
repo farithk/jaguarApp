@@ -31,7 +31,26 @@
   cursor: pointer;
 }
 
+.logo__left__side__secondary__container{
+  position: relative;
+  margin-right: 50px;
+  width: 30px;
+  cursor: pointer;
+  padding-top: 13px;
+  border: 0px solid red;
+}
+
+.logo__left__side__secondary__container__search{
+  position: relative;
+  margin-right: 50px;
+  width: 30px;
+  cursor: pointer;
+  padding-top: 13px;
+  border: 0px solid red;
+}
+
 .logo__left__side__secondary{
+  position: relative;
   margin-right: 50px;
   width: 30px;
   opacity: 0.7;
@@ -64,6 +83,17 @@
   border: 2px solid #cddc39;
 }
 
+.icon__subtitles__header{
+  color: #ffffff;
+  font-size: 10px;
+  margin-top: -2px;
+  border: 0px solid red;
+  width: 50px;
+  margin-left: -10px;
+  text-align: center;
+  opacity: 0.5;
+}
+
 @media only screen and (max-width: 600px) {
 
   .logo__left__side__secondary{
@@ -72,6 +102,10 @@
 
   .logo__container{
     margin-left: 20px;
+  }
+
+  .logo__left__side__secondary__container{
+    display: none;
   }
 
   .profile__image__inner:hover{

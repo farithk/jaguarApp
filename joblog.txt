@@ -1,17 +1,27 @@
+HOB LOG
+
 MAY 14, 2021
 
 20:00 - 20:15 Understanding the problem
-20:15 - 20:45 Checking the end Points and visualizing the way they are used by looking the network requests in the browser, and using Postman to make the POST and GET request to see the responses
+20:15 - 20:45 Checking the end Points and visualizing the way they are used by looking the network requests in the browser, and using Postman to make the POST and GET request to see the responses.
 20:45 - 21:00 Creating the project using create-react-app and cleaning the unnecessary files to start the development.
-21:00 - 21:15 Planing the structure of the project (starting by the main view)
-21:15 - 21:30 Creating and pushing the repository to GitHub
-21:30 - 21:45 Installing Gimp (design open source tool)
-21:45 - 22:00 Creating the Icons file (Icons.js)
-22:00 - 22:45 Building the header component (Header/Header.js)
-22:45 - 23:00 Fixing a bug corresponding to the width dimension of the header (the width of the header didn't fit the width of the body)
-23:00 - 23:45 Creating the component modal for the profile Icon
-23:45 - 00:30 pushing advances to GitHub and Resting time
+21:00 - 21:15 Planing the structure of the project (starting by the main view).
+21:15 - 21:30 Creating and pushing the Front-end repository to GitHub.
+21:30 - 21:45 Installing Gimp (design open source tool).
+21:45 - 22:00 Creating the Icons file (Icons.js).
+22:00 - 22:45 Building the header component (Header/Header.js).
+22:45 - 23:00 Fixing a bug corresponding to the width dimension of the header (the width of the header didn't fit the width of the body).
+23:00 - 23:45 Creating the component modal for the profile Icon.
+23:45 - 00:30 pushing advances to GitHub and Resting time.
 
 MAY 15, 2021
 
-00:30 - 1:15 Creating and Giving style to the Main component (Main/Main.js)
+00:30 - 01:15 Creating and Giving style to the Main component (Main/Main.js).
+*****************************************************************************
+11:30 - 12:00 Giving functionalities to every one of the icons inside the Header.
+12:00 - 13:00 Building the Genome View (Genome.js) with only profile information.
+13:00 - 13:30 Lunch time.
+13:30 - 14:15 Building the Genome View (Genome.js) with only profile information.
+14:15 - 14:45 Creating the Back-end of the project to manage the end points and retrieving information about the users.
+14:45 - 15:15 Creating and pushing the Back-End repository to GitHub.
+15:15 - 15:45 Writing the end points service file to manage the petitions and connecting the front-end to the back-end.
