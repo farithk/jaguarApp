@@ -3,21 +3,39 @@ import './App.css';
 import Header from './Header/Header.js';
 import Main from './Main/Main.js';
 import Genome from './Genome/Genome.js';
-import { user } from './serviceEndPoints.js';
+import { user, connection } from './serviceEndPoints.js';
+
+//Redux
+import { createStore } from "redux";
+import { useSelector, useDispatch } from "react-redux";
 
 function App() {
 
-  const [basicInfo, setBasicInfo] = useState();
+  let events = useSelector(state => state);
+  let dispatch = useDispatch();
+
   const [view, setView] = useState("main");
 
   useEffect(() => {
 
     async function fetchData() {
-      //const req = await axios.get('http://localhost:3030');
-      //console.log(req.data.person);
-      //setBasicInfo()
-      let getUser = await user("farithcomas");
-      console.log(getUser);
+
+      //user information
+      let getUser = await user(events.userId);
+      //user conenctions
+      let connections = await connection(events.userId);
+
+      //save the user information inside the redux variables
+      dispatch({
+        type: 'USER_CONTENT',
+        payload: getUser
+      });
+
+      dispatch({
+        type: 'USER_CONNECTIONS',
+        payload: connections
+      });
+
     }
     fetchData();
   },[])
@@ -44,11 +62,12 @@ function App() {
         <Main />
     }
 
-
     {view === "genome" &&
-        <Genome />
+        <Genome
+          view={view}
+          setView={setView}
+        />
     }
-
 
     </div>
   );

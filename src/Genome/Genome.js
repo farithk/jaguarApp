@@ -1,105 +1,131 @@
 import React, { useEffect, useState } from 'react';
 import BackgroundIcon from "../assets/images/Icons.js";
 import "./Genome.css";
+import Modal from "../Modal/Modal.js";
 
-function Genome(){
+import { user, connection } from '../serviceEndPoints.js';
+
+//Redux
+import { createStore } from "redux";
+import { useSelector, useDispatch } from "react-redux";
+
+function Genome({
+  view,
+  setView,
+}){
+
+  let events = useSelector(state => state);
+  let dispatch = useDispatch();
+
+  const [openModalProfile, setOpenModalProfile] = useState(false);
+
+  const [userName, setUserName] = useState("");
+  const [basicInfo, setBasicInfo] = useState({
+    id:"",
+    name: "",
+    role: "",
+    location: "",
+    picture: "",
+    summary: "",
+    social: [],
+    skills: [],
+    connections: []
+  });
+
+
+  const handleOpenModal = () => {
+    setOpenModalProfile(!openModalProfile);
+  }
+
+  async function handleNewUser(value){
+    console.log(value);
+    let getUser = await user(value);
+    dispatch({
+      type: 'USER_CONTENT',
+      payload: getUser
+    });
+  }
+
+
+  useEffect(() => {
+
+      console.log(events);
+      setBasicInfo({
+        id: events.userContent ? events.userContent.person.id:"",
+        name: events.userContent ? events.userContent.person.name:"",
+        role: events.userContent ? events.userContent.person.professionalHeadline:"",
+        location: events.userContent ? events.userContent.person.location.shortName:"",
+        picture: events.userContent ? events.userContent.person.picture:"",
+        summary: events.userContent ? events.userContent.person.summaryOfBio:"",
+        social: events.userContent ? events.userContent.person.links:"",
+        skills: events.userContent ? events.userContent.strengths.slice(0, 4):"",
+        skillsLong: events.userContent ? events.userContent.strengths:"",
+        connections: events.userConnections ? events.userConnections.people:"",
+      })
+
+  },[events.userId, events.userContent, events.userConnections])
 
   const [overProfileImg, setOverProfileImg] = useState(false);
 
-  let skills = [
-    {
-      skillName: "React",
-    },
-    {
-      skillName: "Redux",
-    },
-    {
-      skillName: "Javascript",
-    },
-    {
-      skillName: "React",
-    },
-    {
-      skillName: "React",
-    },
-    {
-      skillName: "Redux",
-    },
-    {
-      skillName: "Javascript",
-    },
-    {
-      skillName: "React",
-    },
-    {
-      skillName: "React",
-    },
-    {
-      skillName: "React",
-    },
-    {
-      skillName: "Redux",
-    },
-    {
-      skillName: "Javascript",
-    },
-    {
-      skillName: "React",
-    },
-
-  ];
-
   return(
     <>
-    <div className="genome">
+    <div className="genome"
+    style={openModalProfile ? {opacity:"0.8"}:null}
+    >
       <div className="genome__left__container">
-        <div className="genome__profile__image">
-          <img
-           className="profile__image__inner"
-           src="https://starrgate.s3.amazonaws.com:443/CACHE/images/users/4ae2e38a4935a9b46d6f43e72f77a01397a4abe7/profile_RUDDNRM/0cc4274b42a6848481a4939c51e5d732.jpg" alt=""
+       {basicInfo && basicInfo.picture != "" &&
 
-           onMouseOver={()=> setOverProfileImg(true)}
-           onMouseLeave={()=> setOverProfileImg(false)}
+         <div className="genome__profile__image">
+           <img
+            className="profile__image__inner"
+            src={basicInfo && basicInfo.picture != "" ?
+              basicInfo.picture:""
+            } alt=""
 
-           style={overProfileImg ? {border:"2px solid #ffffff"}:{border:"2px solid #ffffff"}}
-          />
-        </div>
+            onMouseOver={()=> setOverProfileImg(true)}
+            onMouseLeave={()=> setOverProfileImg(false)}
+
+            style={overProfileImg ? {border:"2px solid #ffffff"}:{border:"2px solid #ffffff"}}
+           />
+         </div>
+
+       }
+
+
         <div className="genome__profile__name">
-          Farith Comas
+          {basicInfo && basicInfo.name != "" ?
+            basicInfo.name:""
+          }
         </div>
         <div className="genome__profile__role">
-          Software Developer
+          {basicInfo && basicInfo.role != "" ?
+            basicInfo.role:""
+          }
         </div>
         <div className="genome__profile__city">
-          Bogota - Colombia
+          {basicInfo && basicInfo.location != "" ?
+            basicInfo.location:""
+          }
         </div>
 
         <div className="genome__profile__who">
         Who am I ?
         </div>
         <div className="genome__profile__resume">
-        Self-taught,
-        Solving Problem Lover,
-        Coder since 2007,
-        Tech Geek
+          {basicInfo && basicInfo.summary != "" ?
+            basicInfo.summary.split("\n").join(", "):""
+          }
         </div>
 
         <div className="genome__skills__container">
-          <div className="genome__icon__cotainer">
-            <BackgroundIcon
-                name='GitHub'
-            />
-          </div>
-          <div className="genome__icon__cotainer">
-            <BackgroundIcon
-                name='LinkedIn'
-            />
-          </div>
-          <div className="genome__icon__cotainer">
-            <BackgroundIcon
-                name='Instagram'
-            />
-          </div>
+
+        {basicInfo && basicInfo.social && basicInfo.social.filter(item => item.name === "instagram" || item.name === "linkedin" || item.name === "github").map((item, index) => (
+            <div key={index} className="genome__icon__cotainer">
+              <BackgroundIcon
+                  name={item.name}
+              />
+            </div>
+        ))}
 
 
         </div>
@@ -110,23 +136,61 @@ function Genome(){
         </div>
 
         <div className="genome__skills">
-          <div>
-          {skills.map((item, index) => (
-            <span className="genome__skills__tags">{item.skillName}</span>
-          ))}
-          </div>
+
+            {basicInfo && basicInfo.skills && basicInfo.skills.map((item, index) => (
+              <span key={index} className="genome__skills__tags">{item.name}</span>
+            ))}
+
+
+            {basicInfo && basicInfo.skillsLong && basicInfo.skillsLong.length > 4 &&
+              <span onClick={(e) => handleOpenModal()} className="genome__more__skills">{basicInfo.skillsLong.length - 4} more skills</span>
+            }
+
+            {openModalProfile && basicInfo && basicInfo.skillsLong &&
+              <Modal
+                view={view}
+                setView={setView}
+                openModalProfile={openModalProfile}
+                setOpenModalProfile={setOpenModalProfile}
+                skillsLong={basicInfo.skillsLong.slice(4, basicInfo.skillsLong.length)}
+              />
+            }
+
+
         </div>
 
         <div className="genome__profile__who">
         Connections
         </div>
 
-        <div className="genome__connections">
-          <div className="genome__connection__name">Alvaro Andres Restrepo</div>
-          <div className="genome__connection_info">Web Developer</div>
-          <div className="genome__connection_info">Valle del Cauca</div>
-        </div>
+        {basicInfo && basicInfo.connections && basicInfo.connections.filter(item => item.id !== basicInfo.id).map((element, index) => (
+          <div key={index}
+           className="genome__connections"
+           onClick={()=> {
+             handleNewUser(element.publicId);
+           }}
+           >
+            <div className="genome__image__connection">
+              <img
+               className="profile__image__inner"
+               src={basicInfo && basicInfo.picture != "" ?
+                 element.picture:""
+               } alt=""
 
+               onMouseOver={()=> setOverProfileImg(true)}
+               onMouseLeave={()=> setOverProfileImg(false)}
+
+               style={overProfileImg ? {border:"0px solid #ffffff"}:{border:"0px solid #ffffff"}}
+              />
+            </div>
+
+            <div>
+              <div className="genome__connection__name">{element.name}</div>
+              <div className="genome__connection_info">{element.professionalHeadline}</div>
+            </div>
+
+          </div>
+        ))}
 
       </div>
       {/*<div className="genome__right__container"></div>*/}

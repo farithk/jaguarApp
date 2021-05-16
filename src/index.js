@@ -4,11 +4,17 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+import eventsReducer from "./eventsReducer.js";
+
+const events = createStore(eventsReducer);
+
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={events}>
     <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" name="viewport" />
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 
