@@ -17,7 +17,7 @@ MAY 14, 2021
 MAY 15, 2021
 
 00:30 - 01:15 Creating and Giving style to the Main component (Main/Main.js).
-01:15 Time to sleep :)
+01:15 - Time to sleep :)
 *****************************************************************************
 11:30 - 12:00 Giving functionalities to every one of the icons inside the Header.
 12:00 - 13:00 Building the Genome View (Genome.js) with only profile information.
@@ -28,6 +28,7 @@ MAY 15, 2021
 15:15 - 15:45 Writing the end points service file to manage the petitions and connecting the front-end to the back-end.
 15:45 - 16:00 Pushing changes to the FE and BE repositories.
 16:00 - 20:00 Time to do homework :)
+*****************************************************************************
 20:00 - 20:15 Installing Redux to manage global data.
 20:15 - 21:00 Retrieving dynamic information from Torre user end point,save it in a Redux variable to populate the genome profile.
 21:00 - 21:30 Dinner Time :)
@@ -35,3 +36,17 @@ MAY 15, 2021
 22:00 - 22:30 Creating the Modal component to show more than 20 skills
 22:30 - 23:00 Connecting the user signalers end point and retrieving information -> (https://torre.bio/api/bios/${user}/jobs/connections)
 23:00 - 23:15 Pushing changes to the FE and BE repositories.
+23:15 - 23:45 Resting Time
+23:45 - 00:45 Building the Searching view (Search/Search.js)
+00:45 - Time to sleep :)
+*****************************************************************************
+
+MAY 16, 2021
+
+13:00 - 13:45 Building the Searching view (Search/Search.js) for both people and jobs.
+13:45 - 14:30 Creating and connecting the people and jobs end points and retrieving information from the back-end.
+14:30 - 15:00 Working on the style of profile summary information.
+15:00 Resting Time :)
+15:30 - 16:15 Fixing some responsive styles for mobile.
+16:15 - 16:30 Linking the social media icons.
+16:30 - 16:45 Pushing changes to the FE and BE repositories.

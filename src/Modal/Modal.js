@@ -12,6 +12,7 @@ function Modal(
   const handleOverlay = () => {
     setOpenModalProfile();
   }
+  console.log(typeof(skillsLong))
 
   return(
     <>
@@ -21,9 +22,13 @@ function Modal(
        </div>
        <div className="modal__container">
          <div className="modal">
-           {skillsLong && skillsLong.map((item, index) => (
+           {skillsLong && typeof(skillsLong) !== "string" && skillsLong.map((item, index) => (
              <span key={index} className="genome__skills__tags">{item.name}</span>
            ))}
+
+           {skillsLong && typeof(skillsLong) === "string" &&
+             <span className="genome__summary__info__long">{skillsLong}</span>
+           }
          </div>
        </div>
 

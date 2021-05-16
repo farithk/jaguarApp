@@ -1,0 +1,173 @@
+.search{
+  display: flex;
+  background-color: #383b40;
+  border: 0px solid red;
+  height: calc(100vh - 60px);
+  color: #ffffff;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+     -moz-user-select: none; /* Old versions of Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome, Edge, Opera and Firefox */
+}
+
+.search__container__header{
+  display: flex;
+  height: fit-content;
+  width: 50%;
+  margin-top: 100px;
+  margin-left: 25%;
+  border: 0px solid white;
+  padding: 20px;
+}
+
+.search__left__title{
+  border-radius: 00px;
+  border-bottom: 1px solid #ffffff;
+  width: 40%;
+  text-align: center;
+  margin-right: 10%;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.search__right__title{
+  border-radius: 0px;
+  border-bottom: 1px solid #ffffff;
+  width: 40%;
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.header_container_search {
+  position:absolute;
+  top: 300px;
+	width: 50%;
+  margin-left: 25%;
+	border: 1px solid #ffffff;
+	border-radius: 50px;
+	display: flex;
+	align-items: center;
+  padding: 5px;
+}
+
+.header_search__full{
+  min-width: calc(100% - 45px);
+  background: #383b40;
+  outline: none;
+  padding: 5px;
+  margin: 0 5px;
+  border: none;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 18px;
+  color: #BCBCBC;
+  opacity: 0;
+}
+.header_search {
+	min-width: calc(100% - 45px);
+	background: #383b40;
+	outline: none;
+	padding: 5px;
+	margin: 0 5px;
+	border: none;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	line-height: 18px;
+	color: #BCBCBC;
+}
+
+.search__suggested__people__full{
+  overflow: hidden;
+  position: absolute;
+  background-color: #232529;
+  border: 1px solid rgba(205, 220, 57, 0.5);
+  width: 40%;
+  height: 80vh;
+  border-radius: 8px;
+  top: 10vh;
+  left: 30%;
+  z-index: 20;
+  padding: 15px;
+  -webkit-box-shadow: -6px 7px 8px -3px #000000;
+  box-shadow: -6px 7px 8px -3px #000000;
+}
+
+
+.search__suggested__people{
+  overflow: hidden;
+  position: absolute;
+  background-color: rgba(0,0,0,0.4);
+  border: 1px solid rgba(205, 220, 57, 0.5);
+  width: 40%;
+  height: 200px;
+  border-radius: 8px;
+  top: 350px;
+  left: 30%;
+  z-index: 20;
+  padding: 15px;
+  -webkit-box-shadow: -6px 7px 8px -3px #000000;
+  box-shadow: -6px 7px 8px -3px #000000;
+
+}
+
+.search__suggested__people__inner{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    padding: 15px;
+    right: -17px; /* Increase/Decrease this value for cross-browser compatibility */
+    overflow-y: scroll;
+}
+
+
+
+@media only screen and (max-width: 1000px) {
+  .search__container__header{
+    display: flex;
+    height: fit-content;
+    width: 90%;
+    margin-top: 100px;
+    margin-left: 5%;
+    border: 0px solid white;
+    padding: 20px;
+  }
+
+  .header_container_search {
+    position:absolute;
+    top: 300px;
+  	width: 80%;
+    margin-left: 10%;
+  	border: 1px solid #ffffff;
+  	border-radius: 50px;
+  	display: flex;
+  	align-items: center;
+    padding: 5px;
+  }
+
+  .search__suggested__people{
+    width: 80%;
+    height: 200px;
+    top: 350px;
+    left: 8%;
+    z-index: 20;
+    padding: 15px;
+  }
+
+  .search__suggested__people__full{
+    width: 80%;
+    height: 80vh;
+    border-radius: 8px;
+    top: 10vh;
+    left: 6%;
+    z-index: 20;
+    padding: 15px;
+  }
+
+}

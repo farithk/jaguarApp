@@ -1,5 +1,4 @@
 .modal__container{
-  position: relative;
   overflow: hidden;
   position: absolute;
   background-color: black;
@@ -9,7 +8,7 @@
   border-radius: 8px;
   top: calc(50% - 200px);
   left: calc(50% - 150px);
-  z-index: 20;
+  z-index: 50;
   padding: 15px;
   -webkit-box-shadow: -6px 7px 8px -3px #000000;
   box-shadow: -6px 7px 8px -3px #000000;
@@ -23,6 +22,7 @@
     padding: 15px;
     right: -17px; /* Increase/Decrease this value for cross-browser compatibility */
     overflow-y: scroll;
+    background-color: black;
 }
 
 .overLayModal{
@@ -32,7 +32,6 @@
   left: 0;
   top: 0;
   z-index: 0;
-  border: 0px solid red;
 }
 
 @media only screen and (max-width: 1000px) {
@@ -48,11 +47,11 @@
       top: 0;
       bottom: 0;
       left: 0;
-      padding: 10px;
+      padding: 30px;
       right: -17px; /* Increase/Decrease this value for cross-browser compatibility */
       overflow-y: scroll;
   }
   .overLayModal{
-    height: 160vh;
+    height: 100vh;
   }
 }

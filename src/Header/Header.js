@@ -3,10 +3,21 @@ import BackgroundIcon from "../assets/images/Icons.js";
 import "./Header.css";
 import ProfileModal from "../ProfileModal/ProfileModal.js";
 
+import { user, connection, searchPeopleFull } from '../serviceEndPoints.js';
+
+//Redux
+import { createStore } from "redux";
+import { useSelector, useDispatch } from "react-redux";
+
 function Header({
   setView,
   view,
+  setSearchType,
+  searchType
 }){
+
+  let events = useSelector(state => state);
+  let dispatch = useDispatch();
 
   const [openModalProfile, setOpenModalProfile] = useState(false);
   const [overProfileImg, setOverProfileImg] = useState(false);
@@ -15,8 +26,31 @@ function Header({
     setOpenModalProfile(!openModalProfile);
   }
 
-  const handleOpenGenome = (value) => {
+  const handleOpenGenome = async (value) => {
+    if(value === "genome"){
+      let getUser = await user("farithcomas");
+      //user conenctions
+      let connections = await connection("farithcomas");
+
+      //save the user information inside the redux variables
+      dispatch({
+        type: 'USER_CONNECTIONS',
+        payload: connections
+      });
+      dispatch({
+        type: 'USER_CONTENT',
+        payload: getUser
+      });
+
+      dispatch({
+        type: 'USER_ID',
+        payload: "farithcomas"
+      });
+      setView("genome");
+      setSearchType("people");
+    }
     setView(value);
+    console.log(value);
   }
 
   return(
@@ -37,7 +71,7 @@ function Header({
       <div className="left_header_container">
           <div
             className="logo__left__side__secondary__container__search"
-            onClick={() => console.log("search")}>
+            onClick={() => handleOpenGenome("search")}>
               <BackgroundIcon
                   name='Search'
               />
@@ -79,6 +113,8 @@ function Header({
                   setView={setView}
                   openModalProfile={openModalProfile}
                   setOpenModalProfile={setOpenModalProfile}
+                  setSearchType={setSearchType}
+                  searchType={searchType}
                 />
             }
 

@@ -2,20 +2,52 @@ import React, { useEffect, useState } from 'react';
 import BackgroundIcon from "../assets/images/Icons.js";
 import "./ProfileModal.css";
 
+import { user, connection, searchPeopleFull } from '../serviceEndPoints.js';
+
+//Redux
+import { createStore } from "redux";
+import { useSelector, useDispatch } from "react-redux";
+
 function ProfileModal(
   {
    setOpenModalProfile,
    openModalProfile,
    view,
    setView,
+   setSearchType,
+   searchType
   }){
 
   const handleOverlay = () => {
     setOpenModalProfile();
   }
 
-  const handleOpenGenome = (value) => {
-    setView(value);
+  let events = useSelector(state => state);
+  let dispatch = useDispatch();
+
+  async function handleOpenGenome(value){
+    setSearchType("people")
+    console.log("farithcomas");
+    //user information
+    let getUser = await user("farithcomas");
+    //user conenctions
+    let connections = await connection("farithcomas");
+
+    //save the user information inside the redux variables
+    dispatch({
+      type: 'USER_CONNECTIONS',
+      payload: connections
+    });
+    dispatch({
+      type: 'USER_CONTENT',
+      payload: getUser
+    });
+
+    dispatch({
+      type: 'USER_ID',
+      payload: "farithcomas"
+    });
+    setView("genome");
   }
 
   return(

@@ -1,7 +1,8 @@
 const initialState = {
   userId: "farithcomas",
   userContent: null,
-  userConnections: null
+  userConnections: null,
+  jobCard: null
 }
 
 export default function(state= initialState, action) {
@@ -13,6 +14,8 @@ export default function(state= initialState, action) {
       return { ...state, userContent: payload}
     case 'USER_CONNECTIONS':
       return { ...state, userConnections: payload}
+    case 'JOB_CARD':
+      return { ...state, jobCard: payload}
     default:
       return state;
   }

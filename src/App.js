@@ -3,6 +3,9 @@ import './App.css';
 import Header from './Header/Header.js';
 import Main from './Main/Main.js';
 import Genome from './Genome/Genome.js';
+import JobCard from './JobCard/JobCard.js';
+import Search from './Search/Search.js';
+
 import { user, connection } from './serviceEndPoints.js';
 
 //Redux
@@ -15,6 +18,8 @@ function App() {
   let dispatch = useDispatch();
 
   const [view, setView] = useState("main");
+
+  const [searchType, setSearchType] = useState("people");
 
   useEffect(() => {
 
@@ -56,6 +61,8 @@ function App() {
     <Header
       view={view}
       setView={setView}
+      searchType={searchType}
+      setSearchType={setSearchType}
      />
 
     {view === "main" &&
@@ -66,6 +73,26 @@ function App() {
         <Genome
           view={view}
           setView={setView}
+          searchType={searchType}
+          setSearchType={setSearchType}
+        />
+    }
+
+    {view === "jobCard" &&
+      <JobCard
+        view={view}
+        setView={setView}
+        searchType={searchType}
+        setSearchType={setSearchType}
+      />
+    }
+
+    {view === "search" &&
+        <Search
+          view={view}
+          setView={setView}
+          searchType={searchType}
+          setSearchType={setSearchType}
         />
     }
 
