@@ -54,7 +54,8 @@
 .genome__profile__role{
   font-size: 14px;
   opacity: 0.5;
-  width: 100%;
+  width: 90%;
+  margin-left: 5%;
   text-align: center;
   margin-top: 8px;
 }
@@ -149,21 +150,44 @@
   border: 0px solid red;
 }
 
+.connection__container{
+  position: relative;
+  height: 150px;
+  border: 0px solid red;
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+.connection__container__inner{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  padding: 15px;
+  right: -17px; /* Increase/Decrease this value for cross-browser compatibility */
+  overflow-y: scroll;
+}
+
 @media only screen and (max-width: 1000px) {
   .genome{
     display: block;
-    background-color: #383b40;
-    border: 0px solid red;
+    background-color: #green;
     padding-top: 20px;
-    height: 150vh;
+    padding-bottom: 10px;
+    bottom: 0;
+    height: fit-content;
+    padding-bottom: 40px;
+    border: 0px solid red;
   }
 
   .genome__left__container{
     margin-top: 60px;
     width: 80%;
     margin-left: 10%;
-    height: fit-conten;
+    height: fit-content;
+    min-height: fit-content;
     padding-bottom: 50px;
+    margin-bottom: 20px;
   }
 
   .genome__right__container{

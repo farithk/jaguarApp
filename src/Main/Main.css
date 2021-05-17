@@ -67,7 +67,7 @@
   }
   .button__to__find{
     font-size: 20px;
-    top: calc(40% + 80px);
+    top: calc(40% + 100px);
     padding-top: 8px;
     padding-bottom: 8px;
     width: 160px;
@@ -76,7 +76,7 @@
   }
   .powered__message{
     position: absolute;
-    bottom: 50px;
+    bottom: 20px;
     width: 100%;
     text-align: center;
     color: #ffffff;

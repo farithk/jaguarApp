@@ -42,7 +42,7 @@ function Card({
        }
 
         <div>
-          <div className="genome__connection__name">{name.split(" ").length > 3 ? name.split(" ")[0]+" "+name.split(" ")[2]:name}</div>
+          <div className="genome__connection__name">{name && name.split(" ").length > 3 ? name.split(" ")[0]+" "+name.split(" ")[2]:name}</div>
           <div className="genome__connection_info">{role}</div>
           {companyName &&
               <div className="genome__connection_info">{companyName}</div>

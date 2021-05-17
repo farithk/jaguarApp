@@ -52,4 +52,11 @@ MAY 16, 2021
 16:30 - 16:45 Pushing changes to the FE and BE repositories.
 16:45 - 17:30 Deploying the back-end to Heroku.
 17:30 - 17:45 Testing connection between front-end and back-end.
-17:45 - Deploying front-end to firebase.
+17:45 - 18:00 Deploying front-end to firebase.
+18:00 Time to do Homework :)
+*****************************************************************************
+
+MAY 17, 2021
+
+10:00 10:45 Testing the project.
+10:45 - 11:00 Fixing style bugs for the responsive of the genome and job Card view.

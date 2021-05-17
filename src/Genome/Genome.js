@@ -177,11 +177,9 @@ function Genome({
           }
 
         <div className="genome__skills">
-
             {basicInfo && basicInfo.skills && basicInfo.skills.map((item, index) => (
               <span key={index} className="genome__skills__tags">{item.name}</span>
             ))}
-
 
             {basicInfo && basicInfo.skillsLong && basicInfo.skillsLong.length > 4 &&
               <span onClick={(e) => handleOpenModal()} className="genome__more__skills">{basicInfo.skillsLong.length - 4} more skills</span>
@@ -196,31 +194,31 @@ function Genome({
                 skillsLong={basicInfo.skillsLong.slice(4, basicInfo.skillsLong.length)}
               />
             }
-
-
         </div>
-
         {basicInfo && basicInfo.connections.length > 1 &&
           <div className="genome__profile__who">
           Connections
           </div>
         }
 
-        {basicInfo && basicInfo.connections && basicInfo.connections.filter(item => item.id !== basicInfo.id).map((element, index) => (
-          <Card
-            keyy={index}
-            handleNewUser={handleNewUser}
-            setOverProfileImg={setOverProfileImg}
-            setOverProfileImg={setOverProfileImg}
-            basicInfo={basicInfo}
-            overProfileImg={overProfileImg}
-            element={element}
-            name={element.name}
-            role={element.professionalHeadline}
-            picture={element.picture}
-          />
-        ))}
-
+        <div className="connection__container">
+          <div className="connection__container__inner">
+            {basicInfo && basicInfo.connections && basicInfo.connections.filter(item => item.id !== basicInfo.id).map((element, index) => (
+              <Card
+                keyy={index}
+                handleNewUser={handleNewUser}
+                setOverProfileImg={setOverProfileImg}
+                setOverProfileImg={setOverProfileImg}
+                basicInfo={basicInfo}
+                overProfileImg={overProfileImg}
+                element={element}
+                name={element.name}
+                role={element.professionalHeadline}
+                picture={element.picture}
+              />
+            ))}
+          </div>
+        </div>
       </div>
       {/*<div className="genome__right__container"></div>*/}
     </div>
