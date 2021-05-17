@@ -66,7 +66,12 @@ function App() {
      />
 
     {view === "main" &&
-        <Main />
+        <Main
+          view={view}
+          setView={setView}
+          searchType={searchType}
+          setSearchType={setSearchType}
+         />
     }
 
     {view === "genome" &&

@@ -3,7 +3,17 @@ import BackgroundIcon from "../assets/images/Icons.js";
 import "./Main.css";
 import MainImage from "../assets/images/mapa.png"
 
-function Main(){
+function Main({
+  view,
+  setView,
+  searchType,
+  setSearchType
+ }){
+
+  const handleFindJob = () => {
+    setView("search");
+    setSearchType("jobs");
+  }
 
   return(
 
@@ -14,7 +24,7 @@ function Main(){
       let's make work something worthy
       </div>
 
-      <div className="button__to__find">
+      <div className="button__to__find" onClick={()=> handleFindJob()}>
         FIND A JOB
       </div>
 

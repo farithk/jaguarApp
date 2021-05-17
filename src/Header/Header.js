@@ -80,7 +80,7 @@ function Header({
 
           <div
             className="logo__left__side__secondary__container"
-            onClick={() => console.log("job")}>
+            onClick={() => {handleOpenGenome("search"); setSearchType("jobs")}}>
               <BackgroundIcon
                   name='Jobs'
               />

@@ -23,12 +23,23 @@ function Modal(
        <div className="modal__container">
          <div className="modal">
            {skillsLong && typeof(skillsLong) !== "string" && skillsLong.map((item, index) => (
-             <span key={index} className="genome__skills__tags">{item.name}</span>
+             <span key={index} className="genome__skills__tags__modal">{item.name}</span>
            ))}
 
            {skillsLong && typeof(skillsLong) === "string" &&
-             <span className="genome__summary__info__long">{skillsLong}</span>
-           }
+           <>
+             <div className="genome__summary__info__long__container">
+               {skillsLong && typeof(skillsLong) === "string" &&
+                 <span className="genome__summary__info__long">{skillsLong}</span>
+               }
+             </div>
+             <div className="modal__footer">
+             </div>
+           </>  
+            }
+
+
+
          </div>
        </div>
 

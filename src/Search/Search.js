@@ -24,6 +24,8 @@ function Search({ view, setView, searchType, setSearchType}){
 
   const [fullPeople, setFullPeople] = useState(false);
 
+  const [focusInput, setFocusInput] = useState(false);
+
   const handleSearch = (value) => {
     setPeopleSuggested();
     setSearchType(value);
@@ -122,6 +124,23 @@ function Search({ view, setView, searchType, setSearchType}){
      }
   }
 
+  const handleButton = async (value) => {
+    if(searchType === "people"){
+      //console.log("here");
+      let people = await searchPeopleFull(value);
+      console.log(people.results);
+      setPeopleSuggested(people.results);
+      setFullPeople(true);
+    } else {
+      //console.log("here");
+      let people = await searchJobsFull(value);
+      console.log(people.results);
+      setPeopleSuggested(people.results);
+      setFullPeople(true);
+    }
+  }
+
+
   return(
 <>
     <div className="search"
@@ -147,6 +166,7 @@ function Search({ view, setView, searchType, setSearchType}){
 
     {!fullPeople &&
       <div className="header_container_search"
+      style={focusInput ? {border:"2px solid #cddc39"}:{border:"2px solid #ffffff"}}
       onClick={()=> {setFullPeople(false)}}
       >
         <input
@@ -156,7 +176,18 @@ function Search({ view, setView, searchType, setSearchType}){
           onChange={(e) => {setFilter(e.target.value)}}
           type="text"
           onKeyPress={(e)=> {handleEnter(e)}}
+          onFocus={(e) => setFocusInput(true)}
+          onBlur={(e) => setFocusInput(false)}
+
         />
+        <div className="search__icon__inner"
+        onClick={()=> handleButton(filter)}
+        >
+          <BackgroundIcon
+              name='Search'
+          />
+        </div>
+
       </div>
     }
     {console.log(peopleSuggested)}
