@@ -8,7 +8,7 @@
   background-color: #767b82;
   padding: 15px;
   color: #ffffff;
-  z-index: 20;
+  z-index: 50;
 }
 
 .profileModal:after {
@@ -69,5 +69,5 @@
   height: 100%;
   left: 0;
   top: 0;
-  z-index: 20;
+  z-index: 50;
 }

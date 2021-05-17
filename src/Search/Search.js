@@ -11,7 +11,7 @@ import { user, connection, searchPeopleFull, searchJobs, searchJobsFull, searchJ
 import { createStore } from "redux";
 import { useSelector, useDispatch } from "react-redux";
 
-function Search({ view, setView, searchType, setSearchType}){
+function Search({ view, setView, searchType, setSearchType, fullPeople, setFullPeople}){
 
   let events = useSelector(state => state);
   let dispatch = useDispatch();
@@ -21,8 +21,6 @@ function Search({ view, setView, searchType, setSearchType}){
   const [peopleSuggested, setPeopleSuggested] = useState();
 
   const [overProfileImg, setOverProfileImg] = useState(false);
-
-  const [fullPeople, setFullPeople] = useState(false);
 
   const [focusInput, setFocusInput] = useState(false);
 

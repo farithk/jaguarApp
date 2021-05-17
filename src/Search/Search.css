@@ -109,7 +109,7 @@
   width: 40%;
   height: 200px;
   border-radius: 8px;
-  top: 365px;
+  top: 360px;
   left: 30%;
   z-index: 20;
   padding: 15px;
@@ -160,7 +160,7 @@
   .search__suggested__people{
     width: 80%;
     height: 200px;
-    top: 350px;
+    top: 360px;
     left: 8%;
     z-index: 20;
     padding: 15px;

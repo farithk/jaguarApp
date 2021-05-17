@@ -13,7 +13,8 @@ function Header({
   setView,
   view,
   setSearchType,
-  searchType
+  searchType,
+  setFullPeople,
 }){
 
   let events = useSelector(state => state);
@@ -71,7 +72,7 @@ function Header({
       <div className="left_header_container">
           <div
             className="logo__left__side__secondary__container__search"
-            onClick={() => handleOpenGenome("search")}>
+            onClick={() => {handleOpenGenome("search"); setFullPeople(false)}}>
               <BackgroundIcon
                   name='Search'
               />

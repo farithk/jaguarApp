@@ -64,3 +64,5 @@ MAY 17, 2021
 11:15 - 11:45 Styling the more information Modals.
 11:45 - 12:30 Adding search icon to the search bar and fixing style bugs for mobile responsive.
 12:30 - 12:45 Pushing changes to the FE repository && deploying to the web.
+12:45 - 13:00 Testing and fixing responsive style bugs.
+13:00 - 13:15 Pushing changes to the FE repository && deploying to the web.

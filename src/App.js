@@ -21,6 +21,8 @@ function App() {
 
   const [searchType, setSearchType] = useState("people");
 
+  const [fullPeople, setFullPeople] = useState(false);
+
   useEffect(() => {
 
     async function fetchData() {
@@ -63,6 +65,8 @@ function App() {
       setView={setView}
       searchType={searchType}
       setSearchType={setSearchType}
+      setFullPeople={setFullPeople}
+      fullPeople={fullPeople}
      />
 
     {view === "main" &&
@@ -98,6 +102,8 @@ function App() {
           setView={setView}
           searchType={searchType}
           setSearchType={setSearchType}
+          setFullPeople={setFullPeople}
+          fullPeople={fullPeople}
         />
     }
 
