@@ -12,7 +12,7 @@ function Modal(
   const handleOverlay = () => {
     setOpenModalProfile();
   }
-  console.log(typeof(skillsLong))
+  //console.log(typeof(skillsLong))
 
   return(
     <>

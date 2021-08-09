@@ -1,7 +1,7 @@
 .profileModal{
   position: absolute;
   width: 250px;
-  height: 110px;
+  height: fit-content;
   border-radius: 8px;
   margin-left: -240px;
   margin-top: 25px;

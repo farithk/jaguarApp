@@ -12,7 +12,7 @@ function Main({
 
   const handleFindJob = () => {
     setView("search");
-    setSearchType("jobs");
+    setSearchType("people");
   }
 
   return(
@@ -21,11 +21,11 @@ function Main({
       <img className="main__image__cover" src={MainImage} alt="" />
 
       <div className="main__title">
-      let's make work something worthy
+      A really cool countries library
       </div>
 
       <div className="button__to__find" onClick={()=> handleFindJob()}>
-        FIND A JOB
+        Find A Country
       </div>
 
       <div className="powered__message">

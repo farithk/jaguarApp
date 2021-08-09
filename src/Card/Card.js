@@ -25,14 +25,14 @@ function Card({
       <div key={keyy}
        className="genome__connections"
        onClick={()=> {
-         console.log(element);
-         handleNewUser(element.publicId ? element.publicId:(element.username ? element.username:element.id));
+         //console.log(element.name);
+         handleNewUser(element.name);
        }}
        >
        {picture &&
          <div className="genome__image__connection">
            <img
-            className="profile__image__inner"
+            className="profile__image__inner_C"
             src={picture} alt=""
             onMouseOver={()=> setOverProfileImg(true)}
             onMouseLeave={()=> setOverProfileImg(false)}

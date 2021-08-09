@@ -3,7 +3,7 @@ import BackgroundIcon from "../assets/images/Icons.js";
 import "./Header.css";
 import ProfileModal from "../ProfileModal/ProfileModal.js";
 
-import { user, connection, searchPeopleFull } from '../serviceEndPoints.js';
+import { user } from '../serviceEndPoints.js';
 
 //Redux
 import { createStore } from "redux";
@@ -27,17 +27,13 @@ function Header({
     setOpenModalProfile(!openModalProfile);
   }
 
-  const handleOpenGenome = async (value) => {
-    if(value === "genome"){
-      let getUser = await user("farithcomas");
-      //user conenctions
-      let connections = await connection("farithcomas");
+  useEffect(() => {
 
-      //save the user information inside the redux variables
-      dispatch({
-        type: 'USER_CONNECTIONS',
-        payload: connections
-      });
+    async function fetchData() {
+
+      let getUser = await user("colombia");
+      //console.log(getUser[0].name);
+
       dispatch({
         type: 'USER_CONTENT',
         payload: getUser
@@ -45,63 +41,40 @@ function Header({
 
       dispatch({
         type: 'USER_ID',
-        payload: "farithcomas"
+        payload: "colombia"
       });
-      setView("genome");
-      setSearchType("people");
+
     }
-    setView(value);
-    console.log(value);
-  }
+    if(!events.userContent){
+      fetchData();
+    }
+
+  },[])
 
   return(
 
     <div className="header">
-    {/*Main page
-      HEADER
-      logo of torre -> search icon (to go and find people or jobs) -> job my jobs (applied) -> my genome (profile) -> profile image (name and email and the genome) -> profile modal (component)
-    */}
+
       <div
       className="logo__container"
-      onClick={() => handleOpenGenome("main")}
+      onClick={() => setView("main")}
       >
-      <BackgroundIcon
-          name='Logo'
-      />
+        Countries
       </div>
       <div className="left_header_container">
           <div
             className="logo__left__side__secondary__container__search"
-            onClick={() => {handleOpenGenome("search"); setFullPeople(false)}}>
+            onClick={() => {setView("search"); setFullPeople(false)}}>
               <BackgroundIcon
                   name='Search'
               />
               <p className="icon__subtitles__header">Search</p>
           </div>
 
-          <div
-            className="logo__left__side__secondary__container"
-            onClick={() => {handleOpenGenome("search"); setSearchType("jobs")}}>
-              <BackgroundIcon
-                  name='Jobs'
-              />
-              <p className="icon__subtitles__header">Jobs</p>
-          </div>
-
-          <div
-            className="logo__left__side__secondary__container"
-            onClick={() => handleOpenGenome("genome")}>
-            <BackgroundIcon
-                name='Genome'
-            />
-            <p className="icon__subtitles__header">Genome</p>
-          </div>
-
-
           <div className="profile__image__container">
             <img onClick={(e) => handleOpenModal()}
              className="profile__image__inner"
-             src="https://starrgate.s3.amazonaws.com:443/CACHE/images/users/4ae2e38a4935a9b46d6f43e72f77a01397a4abe7/profile_RUDDNRM/0cc4274b42a6848481a4939c51e5d732.jpg" alt=""
+             src={events.userContent && events.userContent[0] ? events.userContent[0].flag:null} alt=""
 
              onMouseOver={()=> setOverProfileImg(true)}
              onMouseLeave={()=> setOverProfileImg(false)}

@@ -39,9 +39,18 @@
 
 
 .genome__profile__image{
-  width: 120px;
+  width: 100px;
+  min-height: 100px;
   margin-left: calc(50% - 60px);
   margin-top: -60px;
+}
+
+.profile__image__inner_G{
+  max-width: 120px;
+  min-height: 120px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  cursor: pointer;
 }
 
 .genome__profile__name{
@@ -81,6 +90,7 @@
   margin-left: 20px;
   margin-top: 15px;
   opacity: 1;
+  font-weight: 100;
 }
 
 
@@ -108,7 +118,7 @@
 .genome__skills{
   margin-left: 20px;
   max-width: 90%;
-  height: 100px;
+  height: 50px;
   border: 0px solid red;
   margin-top: 10px;
 }
@@ -182,7 +192,6 @@
 @media only screen and (max-width: 1000px) {
   .genome{
     display: block;
-    background-color: #green;
     padding-top: 20px;
     padding-bottom: 10px;
     bottom: 0;
@@ -209,6 +218,6 @@
 
   .genome__skills{
     border: 0px solid red;
-    height: 150px;
+    height: 70px;
   }
 }

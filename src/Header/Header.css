@@ -18,6 +18,8 @@
   cursor: pointer;
   text-align: center;
   padding-top: 20px;
+  color: #ffffff;
+  font-size: 20px;
 }
 
 .logo__image{

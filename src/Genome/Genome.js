@@ -4,16 +4,14 @@ import "./Genome.css";
 import Modal from "../Modal/Modal.js";
 import Card from "../Card/Card.js";
 
-import { user, connection } from '../serviceEndPoints.js';
+import { user } from '../serviceEndPoints.js';
 
 //Redux
-import { createStore } from "redux";
 import { useSelector, useDispatch } from "react-redux";
 
 function Genome({
   view,
   setView,
-  searchType, setSearchType
 }){
 
   let events = useSelector(state => state);
@@ -23,7 +21,6 @@ function Genome({
   const [openModalProfileSummary, setOpenModalProfileSummary] = useState(false);
   const [overProfileImg, setOverProfileImg] = useState(false);
 
-  const [userName, setUserName] = useState("");
   const [basicInfo, setBasicInfo] = useState({
     id:"",
     name: "",
@@ -32,9 +29,11 @@ function Genome({
     picture: "",
     summary: "",
     summaryLong:"",
+    population:"",
     social: [],
     skills: [],
-    connections: []
+    connections: [],
+    currencies:[]
   });
 
 
@@ -47,49 +46,40 @@ function Genome({
   }
 
   async function handleNewUser(value){
-  console.log(value);
-    if(searchType === "people"){
+    //console.log(value);
 
-      //user information
-      let getUser = await user(value);
-      //user conenctions
-      let connections = await connection(value);
+    //user information
+    let getUser = await user(value);
 
-      //save the user information inside the redux variables
-      dispatch({
-        type: 'USER_CONNECTIONS',
-        payload: connections
-      });
-      dispatch({
-        type: 'USER_CONTENT',
-        payload: getUser
-      });
+    dispatch({
+      type: 'USER_CONTENT',
+      payload: getUser
+    });
 
-      dispatch({
-        type: 'USER_ID',
-        payload: value
-      });
-    }
+    dispatch({
+      type: 'USER_ID',
+      payload: value
+    });
+
   }
 
-
   useEffect(() => {
-      console.log(events, searchType);
       setBasicInfo({
-        id: events.userContent && events.userContent.person ? events.userContent.person.id:"",
-        name: events.userContent && events.userContent.person.name ? events.userContent.person.name:"",
-        role: events.userContent && events.userContent.person.professionalHeadline ? events.userContent.person.professionalHeadline:"",
-        location: events.userContent && events.userContent.person.location.shortName ? events.userContent.person.location.shortName:"",
-        picture: events.userContent && events.userContent.person.picture ? events.userContent.person.picture:"",
-        summary: events.userContent && events.userContent.person.summaryOfBio ? events.userContent.person.summaryOfBio.slice(0, 50):"",
-        summaryLong: events.userContent && events.userContent.person.summaryOfBio ? events.userContent.person.summaryOfBio:"",
-        social: events.userContent && events.userContent.person.links ? events.userContent.person.links:"",
-        skills: events.userContent && events.userContent.strengths ? events.userContent.strengths.slice(0, 4):"",
-        skillsLong: events.userContent && events.userContent.strengths ? events.userContent.strengths:"",
-        connections: events.userConnections && events.userConnections.people ? events.userConnections.people:"",
+        id: events.userContent ? events.userContent.userId:"",
+        name: events.userContent && events.userContent[0] ? events.userContent[0].name:"",
+        role: events.userContent && events.userContent[0] ? events.userContent[0].subregion:"",
+        picture: events.userContent && events.userContent[0] ? events.userContent[0].flag:null,
+        summary: events.userContent && events.userContent[0] ? events.userContent[0].capital:"",
+        summaryLong: "",
+        population: events.userContent && events.userContent[0]  ? events.userContent[0].population:"",
+        currencies: events.userContent && events.userContent[0]  ? events.userContent[0].currencies:"",
+        social: "",
+        skills: events.userContent && events.userContent[0]  ? events.userContent[0].languages:"",
+        skillsLong: "",
+        connections: "",
       })
 
-  },[events.userId, events.userContent, events.userConnections])
+  },[])
 
   return(
     <>
@@ -101,7 +91,7 @@ function Genome({
 
          <div className="genome__profile__image">
            <img
-            className="profile__image__inner"
+            className="profile__image__inner_G"
             src={basicInfo && basicInfo.picture != "" ?
               basicInfo.picture:""
             } alt=""
@@ -130,49 +120,45 @@ function Genome({
           }
         </div>
 
-        {basicInfo && basicInfo.summaryLong && basicInfo.summaryLong.length > 0 &&
+        {basicInfo && basicInfo.summary && basicInfo.summary.length > 0 &&
           <div className="genome__profile__who">
-          Who am I ?
+          Capital:
           </div>
          }
-
 
         <div className="genome__profile__resume">
           {basicInfo && basicInfo.summary ?
             basicInfo.summary.split("\n").join(", "):""
           }
-          {basicInfo && basicInfo.summaryLong && basicInfo.summaryLong.length > 4 &&
-            <span className="genome__profile__resume__more" onClick={(e) => handleOpenModalSummary()} > more </span>
-          }
-          {openModalProfileSummary && basicInfo && basicInfo.skillsLong &&
-            <Modal
-              view={view}
-              setView={setView}
-              openModalProfile={openModalProfileSummary}
-              setOpenModalProfile={setOpenModalProfileSummary}
-              skillsLong={basicInfo.summaryLong}
-            />
+        </div>
+
+        {basicInfo && basicInfo.summary && basicInfo.summary.length > 0 &&
+          <div className="genome__profile__who">
+          Population:
+          </div>
+         }
+
+        <div className="genome__profile__resume">
+          {basicInfo && basicInfo.population ?
+            basicInfo.population:""
           }
         </div>
 
-        <div className="genome__skills__container">
-
-        {basicInfo && basicInfo.social && basicInfo.social.filter(item => item.name === "instagram" || item.name === "linkedin" || item.name === "github").map((item, index) => (
-            <div key={index} className="genome__icon__cotainer">
-              <a href={item.address} target="_blank">
-                <BackgroundIcon
-                    name={item.name}
-                />
-              </a>
+        {basicInfo && basicInfo.skills.length > 0 &&
+            <div className="genome__profile__who">
+            Currencies
             </div>
-        ))}
+          }
 
-
+        <div className="genome__skills">
+            {basicInfo && basicInfo.currencies && basicInfo.currencies.map((item, index) => (
+              <span key={index} className="genome__skills__tags">{item.name}</span>
+            ))}
         </div>
 
           {basicInfo && basicInfo.skills.length > 0 &&
             <div className="genome__profile__who">
-            Skills
+            Languages
             </div>
           }
 
@@ -195,6 +181,7 @@ function Genome({
               />
             }
         </div>
+
         {basicInfo && basicInfo.connections.length > 1 &&
           <div className="genome__profile__who">
           Connections

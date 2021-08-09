@@ -21,6 +21,14 @@
   margin-top: 10px;
 }
 
+.profile__image__inner_C{
+  max-width: 50px;
+  min-height: 50px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  cursor: pointer;
+}
+
 .genome__connection_info{
   opacity: 0.6;
   margin-top: 5px;

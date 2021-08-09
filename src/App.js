@@ -3,10 +3,9 @@ import './App.css';
 import Header from './Header/Header.js';
 import Main from './Main/Main.js';
 import Genome from './Genome/Genome.js';
-import JobCard from './JobCard/JobCard.js';
 import Search from './Search/Search.js';
 
-import { user, connection } from './serviceEndPoints.js';
+import { user } from './serviceEndPoints.js';
 
 //Redux
 import { createStore } from "redux";
@@ -22,30 +21,6 @@ function App() {
   const [searchType, setSearchType] = useState("people");
 
   const [fullPeople, setFullPeople] = useState(false);
-
-  useEffect(() => {
-
-    async function fetchData() {
-
-      //user information
-      let getUser = await user(events.userId);
-      //user conenctions
-      let connections = await connection(events.userId);
-
-      //save the user information inside the redux variables
-      dispatch({
-        type: 'USER_CONTENT',
-        payload: getUser
-      });
-
-      dispatch({
-        type: 'USER_CONNECTIONS',
-        payload: connections
-      });
-
-    }
-    fetchData();
-  },[])
 
   return (
     <div className="app">
@@ -85,15 +60,6 @@ function App() {
           searchType={searchType}
           setSearchType={setSearchType}
         />
-    }
-
-    {view === "jobCard" &&
-      <JobCard
-        view={view}
-        setView={setView}
-        searchType={searchType}
-        setSearchType={setSearchType}
-      />
     }
 
     {view === "search" &&

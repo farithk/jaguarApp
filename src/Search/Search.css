@@ -14,21 +14,21 @@
 }
 
 .search__container__header{
-  display: flex;
   height: fit-content;
   width: 50%;
   margin-top: 100px;
   margin-left: 25%;
   border: 0px solid white;
   padding: 20px;
+  align-items: center;
 }
 
 .search__left__title{
   border-radius: 00px;
   border-bottom: 1px solid #ffffff;
-  width: 40%;
+  width: 90%;
   text-align: center;
-  margin-right: 10%;
+  margin-left: 0%;
   padding: 10px;
   cursor: pointer;
 }
